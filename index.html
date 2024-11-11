@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website About Me 2.0</title>
+  </head>
+  <body>
+    <h1>A Website About Me! (Now with JavaScript!)</h1>
+    <p>Click the button to display the date and time.</p>
+    <button onclick="displayDate()">Display Date</button>
+    <h2>My favorite books:</h2>
+    <button onClick="showBooks()">Show/Hide</button>
+    <ul style="display: none;" id="books">
+      <li>The Lord of the Rings</li>
+      <li>House of Leaves</li>
+      <li>Dark Matter</li>
+    </ul>
+    <h2>My favorite video games</h2>
+    <button onClick="populateGameList()">Show One More</button>
+  </body>
+  <script>
+    function displayDate() {
+      document.body.innerHTML =
+        "<h1>Today's date and time is: " + Date() + "</h1>";
+    }
+
+    function showBooks() {
+      var books = document.getElementById("books");
+      if (books.style.display === "none") {
+        books.style.display = "block";
+      } else {
+        books.style.display = "none";
+      }
+    }
+
+    var gameIndex = 0;
+    function populateGameList() {
+      var games = [
+        "Neverwinter Nights (2002)",
+        "Mass Effect 2",
+        "The Witcher 3"
+      ];
+      if (gameIndex < games.length) {
+        var gameList = document.getElementById("gameList");
+        if (!gameList) {
+          gameList = document.createElement("ul");
+          gameList.id = "gameList";
+          document.body.appendChild(gameList);
+        }
+        var gameItem = document.createElement("li");
+        gameItem.textContent = games[gameIndex];
+        gameList.appendChild(gameItem);
+        gameIndex++;
+      }
+    }
+  </script>
+</html>
